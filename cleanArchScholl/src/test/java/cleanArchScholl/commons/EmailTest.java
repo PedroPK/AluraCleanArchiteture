@@ -13,7 +13,7 @@ class EmailTest {
 			() -> new Email(null)
 		);
 	}
-	
+
 	@Test
 	void invalidEmptyEmailAddress() {
 		assertThrows(
@@ -21,7 +21,7 @@ class EmailTest {
 			() -> new Email("")
 		);
 	}
-	
+
 	@Test
 	void invalidWithoutAtEmailAddress() {
 		assertThrows(
@@ -29,7 +29,7 @@ class EmailTest {
 				() -> new Email("myemail.com")
 				);
 	}
-	
+
 	@Test
 	void invalidWithoutDotEmailAddress() {
 		assertThrows(
@@ -37,15 +37,15 @@ class EmailTest {
 				() -> new Email("myemail@provider")
 				);
 	}
-	
+
 	@Test
 	void validEmailAddress() {
 		// Arrange
 		String emailAddress = "myEmail@provider.com";
-		
+
 		// Act
 		Email email = new Email(emailAddress);
-		
+
 		assertNotNull(email);
 	}
 
