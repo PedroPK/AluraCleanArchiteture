@@ -77,5 +77,76 @@ class CPFTest {
 		// Assert
 		assertNotNull(cpf);
 	}
+	
+	@Test
+	void testInvaliCPFdWithOneDigitAtThirdSegment() {
+		// Arrange
+		String nineDigitsWithDotsCPF = "123.456.78-01";
+		
+		// Act
+		// CPF cpf = new CPF(nineDigitsWithoutDotsCPF);		
 
+		// Assert
+		assertThrows(IllegalArgumentException.class, () -> new CPF(nineDigitsWithDotsCPF));
+	}
+	
+	@Test
+	void testInvaliCPFdWithOneDigitAtSecondSegment() {
+		// Arrange
+		String nineDigitsWithDotsCPF = "123.45.789-01";
+		
+		// Act
+		// CPF cpf = new CPF(nineDigitsWithoutDotsCPF);		
+		
+		// Assert
+		assertThrows(IllegalArgumentException.class, () -> new CPF(nineDigitsWithDotsCPF));
+	}
+	
+	@Test
+	void testInvaliCPFdWithOneDigitAtFirstSegment() {
+		// Arrange
+		String nineDigitsWithDotsCPF = "12.456.789-01";
+		
+		// Act
+		// CPF cpf = new CPF(nineDigitsWithoutDotsCPF);		
+		
+		// Assert
+		assertThrows(IllegalArgumentException.class, () -> new CPF(nineDigitsWithDotsCPF));
+	}
+	
+	@Test
+	void testInvalidCPFWithDotsButOneVerificationDigitOnly() {
+		// Arrange
+		String nineDigitsWithDotsCPF = "123.456.789-0";
+		
+		// Act
+		// CPF cpf = new CPF(nineDigitsWithoutDotsCPF);		
+		
+		// Assert
+		assertThrows(IllegalArgumentException.class, () -> new CPF(nineDigitsWithDotsCPF));
+	}
+
+	@Test
+	void testInvalidCPFWithDotsButWithoutHyphenVerificationDigit() {
+		// Arrange
+		String nineDigitsWithDotsCPF = "123.456.78901";
+		
+		// Act
+		// CPF cpf = new CPF(nineDigitsWithoutDotsCPF);		
+		
+		// Assert
+		assertThrows(IllegalArgumentException.class, () -> new CPF(nineDigitsWithDotsCPF));
+	}
+	
+	@Test
+	void testInvalidCPFWithoutDots() {
+		// Arrange
+		String nineDigitsWithDotsCPF = "123456789-01";
+		
+		// Act
+		// CPF cpf = new CPF(nineDigitsWithoutDotsCPF);		
+		
+		// Assert
+		assertThrows(IllegalArgumentException.class, () -> new CPF(nineDigitsWithDotsCPF));
+	}
 }
